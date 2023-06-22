@@ -1,8 +1,6 @@
 
 package com.prog.cifradocesarcleancode;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -45,7 +43,9 @@ public class CifradoCesarCleanCode {
         
         
     }
-    
+    /*
+        Cifra el texto utilizando el tipo char que está codificado numericamente como UTF-16
+    */
     public static String cifrar(String cadena, int desplazamiento){
         char caracterAnalizado;
         String cadenaCifrada="";
@@ -64,6 +64,9 @@ public class CifradoCesarCleanCode {
         }
         return cadenaCifrada;
     }
+    /*
+        Descifra el texto realizando la operacion inversa. Tambien ignora los espacios.
+    */
     public static String descifrar (String cadena, int desplazamiento){
         char caracterAnalizado;
         String cadenaDescifrada="";
