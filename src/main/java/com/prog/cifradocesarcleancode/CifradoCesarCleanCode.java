@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class CifradoCesarCleanCode {
 
     public static void main(String[] args) {
-        Map<Integer,String>correspondencias=rellenarHashMap();
+        
         String cadena;
         int desplazamiento;
         System.out.println("Bienvenido al programa de cifrado/descifrado césar");
@@ -45,31 +45,40 @@ public class CifradoCesarCleanCode {
         
         
     }
-    public static HashMap<Integer,String> rellenarHashMap(){
-        HashMap <Integer,String> alfabeto=new HashMap<>();
-        int i=1;
-        for (char j='A'; j<='Z';j++){
-            alfabeto.put(i, j+"");
-            i++;
-        }
-        return alfabeto;
-    }
+    
     public static String cifrar(String cadena, int desplazamiento){
         char caracterAnalizado;
         String cadenaCifrada="";
         for (int i=0; i<cadena.length();i++){
         caracterAnalizado=cadena.charAt(i);
-        caracterAnalizado=(char)(caracterAnalizado+desplazamiento);
-        if (caracterAnalizado>'Z'){
-            char correccion=(char)(caracterAnalizado-'Z');
-            caracterAnalizado=(char)('A'+correccion);
+        if(caracterAnalizado!=' ')
+        {
+            caracterAnalizado=(char)(caracterAnalizado+desplazamiento);
+            if (caracterAnalizado>'Z'){
+                char correccion=(char)(caracterAnalizado-'Z');
+                caracterAnalizado=(char)('A'+correccion);
+            }
         }
         cadenaCifrada+=caracterAnalizado;
-    }
+        
+        }
         return cadenaCifrada;
     }
     public static String descifrar (String cadena, int desplazamiento){
-        return cadena;
+        char caracterAnalizado;
+        String cadenaDescifrada="";
+        for (int i=0; i<cadena.length();i++){
+        caracterAnalizado=cadena.charAt(i);
+        if(caracterAnalizado!=' ')
+        {
+            caracterAnalizado=(char)(caracterAnalizado-desplazamiento);
+            if (caracterAnalizado<'A'){
+                char correccion=(char)('A'-caracterAnalizado);
+                caracterAnalizado=(char)('Z'-correccion);
+            }
+        }
+        cadenaDescifrada+=caracterAnalizado;
+    }return cadenaDescifrada;
     }
     
 }
